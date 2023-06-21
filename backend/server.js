@@ -39,9 +39,8 @@ mongoose.connect(URI, {
 const db = mongoose.connection;
 
 
-
-const userRouter = require("./routes/users.js");
-app.use("/userDetails", userRouter);
+const authRoutes = require('./routes/userRoutes')
+app.use('/auth', authRoutes);
 
 
 

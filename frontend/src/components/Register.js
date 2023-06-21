@@ -1,64 +1,42 @@
 import React from 'react'
 import axios from "axios";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
 
 
+    const history = useNavigate();
 
 
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
-    const [age, setAge] = useState('')
-    const [dob, setDob] = useState('')
-    const [password, setPassword] = useState('')
+    const [firstname, setFirstName] = useState('');
+    const [lastname, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [age, setAge] = useState('');
+    const [dob, setDob] = useState('');
+    const [password, setPassword] = useState('');
 
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
+        try {
+            await axios.post('http://localhost:8080/auth/register', {
+                firstname,
+                lastname,
+                email,
+                age,
+                dob,
+                password,
+            });
 
-    //should pass event
-    function btnClick(e) {
-
-
-
-        const validate = true;
-
-        if (validate === true) {
-
-            e.preventDefault();
-
-
-            const formData = new FormData();
-
-            formData.append('firstname', firstName);
-            formData.append('lastname', lastName);
-            formData.append('email', email);
-            formData.append('age', age);
-            formData.append('dob', dob);
-            formData.append('password', password);
-
-
-
-
-            axios.post("http://localhost:8080/userDetails/addUser", formData).then(function () {
-
-                alert("Student Add");
-                //successModel();
-
-
-            }).catch(function (err) {
-
-                alert(err);
-                //unsuccessModel();
-
-            })
-
+            alert("User add success")
+            history('/login')
+        } catch (error) {
+            alert(error)
+            console.log(error);
         }
-
-
-    }
-
+    };
 
 
 
@@ -103,7 +81,7 @@ export default function Register() {
                 </div><br></br>
 
 
-                <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-48" onClick={btnClick}>Submit</button><br></br><br></br>
+                <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-48" onClick={handleSubmit}>Submit</button><br></br><br></br>
                 <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-48">Cancel</button>
             </form>
 
