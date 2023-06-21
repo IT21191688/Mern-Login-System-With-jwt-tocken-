@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from "axios";
-import Styles from '../styles/Register.module.css'
 import { useState } from 'react';
 
 export default function Register() {
@@ -42,7 +41,7 @@ export default function Register() {
 
 
 
-            axios.post("http://localhost:8050/appoinment/addAppoinment", formData).then(function () {
+            axios.post("http://localhost:8080/userDetails/addUser", formData).then(function () {
 
                 alert("Student Add");
                 //successModel();
@@ -75,27 +74,27 @@ export default function Register() {
                 <div className='row'>
                     <div class="form-group col-md-6">
                         <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name" onChange={e => setFirstName(e.target.value)} />
+                        <input type="text" class="form-control" placeholder="First Name" onChange={e => setFirstName(e.target.value)} required />
                     </div>
                     <div class="form-group col-md-6">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" onChange={e => setLastName(e.target.value)} />
+                        <input type="text" class="form-control" placeholder="Last Name" onChange={e => setLastName(e.target.value)} required />
                     </div>
                 </div><br></br>
                 <div className='row'>
                     <div class="form-group col-md-6">
                         <label >Email</label>
-                        <input type="email" class="form-control" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
+                        <input type="email" class="form-control" placeholder="Enter email" onChange={e => setEmail(e.target.value)} required />
                     </div>
                     <div class="form-group col-md-6">
                         <label >Age</label>
-                        <input type="number" class="form-control" placeholder="Age" onChange={e => setAge(e.target.value)} />
+                        <input type="number" class="form-control" placeholder="Age" onChange={e => setAge(e.target.value)} required />
                     </div>
                 </div><br></br>
                 <div className='row'>
                     <div class="form-group col-md-6">
                         <label >Date Of Birth</label>
-                        <input type="date" class="form-control" onChange={e => setDob(e.target.value)} />
+                        <input type="date" class="form-control" onChange={e => setDob(e.target.value)} required />
                     </div>
                     <div class="form-group col-md-6">
                         <label >Password</label>
