@@ -1,14 +1,14 @@
 import React from 'react'
 import axios from "axios";
 import Styles from '../styles/Register.module.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
 
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
 
     const [email, setEmail] = useState('');
@@ -20,17 +20,23 @@ export default function Login() {
 
         try {
             // Send login request to the backend API
-            const response = await axios.post('http://localhost:8080/auth/login', { email, password }).then(function (res) {
+            const response = await axios.post('http://localhost:8080/auth/login', { email, password });
+            const token = response.data.token;
 
-                const { token } = response.data;
 
-                // Store the token in local storage
-                localStorage.setItem('token', token);
+            const role = response.data.role
 
-                // Redirect to the home page
-                history.push('/home');
+            // Store the token in local storage
+            localStorage.setItem('token', token);
+            localStorage.setItem('role', role);
 
-            });
+
+
+            alert("Login success" + role)
+
+
+            window.location.reload(true);
+
 
         } catch (error) {
             console.log(error);
@@ -38,7 +44,17 @@ export default function Login() {
     };
 
 
+    useEffect(() => {
+        if (localStorage.getItem('role') === 'admin') {
+            navigate('/adminHome');
 
+        } else if (localStorage.getItem('role') === 'user') {
+            navigate('/userHome');
+        }
+        else {
+            navigate('/login')
+        }
+    }, []);
 
 
 

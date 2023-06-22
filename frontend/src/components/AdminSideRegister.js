@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from "axios";
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Register() {
+export default function AdminSideRegister() {
 
 
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ export default function Register() {
     const [age, setAge] = useState('');
     const [dob, setDob] = useState('');
     const [password, setPassword] = useState('');
-    const role = 'user'
+    const [role, setRole] = useState('')
 
 
     const handleSubmit = async (e) => {
@@ -39,6 +39,13 @@ export default function Register() {
             console.log(error);
         }
     };
+
+    useEffect(() => {
+
+        setRole('admin')
+
+
+    }, []);
 
 
 
@@ -78,8 +85,19 @@ export default function Register() {
                         <input type="date" class="form-control" onChange={e => setDob(e.target.value)} required />
                     </div>
                     <div class="form-group col-md-6">
-                        <label >Password</label>
+                        <label ><b>Password</b></label>
                         <input type="password" class="form-control" placeholder="password" onChange={e => setPassword(e.target.value)} />
+                    </div>
+                </div><br></br>
+                <div className='row'>
+                    <div class="form-group col-md-12">
+                        <div className="form-group col-md-12 mt-3 mt-md-0">
+                            <label for="name"><b>Job Role</b></label>
+                            <select name="role" className="form-control" onChange={e => setRole(e.target.value)} required>
+                                <option value={'admin'}>Admin</option>
+                                <option value={'user'}>User</option>
+                            </select>
+                        </div >
                     </div>
                 </div><br></br>
 

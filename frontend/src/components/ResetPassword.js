@@ -4,7 +4,7 @@ import Styles from '../styles/Register.module.css'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Login() {
+export default function ResetPassword() {
 
 
 

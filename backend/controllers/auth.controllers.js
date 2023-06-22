@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 const register = async (req, res) => {
-    const { firstname, lastname, email, age, dob, password } = req.body;
+    const { firstname, lastname, email, age, dob, password, role } = req.body;
 
     try {
         // Check if user already exists
@@ -17,7 +17,7 @@ const register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user
-        const user = await User.create({ firstname, lastname, email, age, dob, password: hashedPassword });
+        const user = await User.create({ firstname, lastname, email, age, dob, password: hashedPassword, role });
 
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
@@ -44,8 +44,9 @@ const login = async (req, res) => {
 
         // Generate a JWT token
         const token = jwt.sign({ userId: user._id }, config.secretKey);
+        const role = user.role
 
-        res.json({ token });
+        res.json({ token, role });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Something went wrong' });
