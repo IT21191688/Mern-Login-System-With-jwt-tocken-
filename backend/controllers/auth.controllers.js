@@ -119,8 +119,49 @@ const deleteUser = async (req, res) => {
 };
 
 
+const checkOldPassword = async (req, res) => {
+    const { email, password, oldPassword } = req.body;
+
+    try {
+        // Check if user exists
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid email or password' });
+        }
+
+        const id = user._id;
+        // Compare the passwords
+        const isMatch = await bcrypt.compare(oldPassword, user.password);
 
 
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid email or Old password' });
+        } else {
+
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            const result = await User.findByIdAndUpdate(id, { "password": hashedPassword });
+
+
+            /*console.log(result)*/
+
+            if (result) {
+
+                res.json({ pass: true });
+            }
+            else {
+                res.json({ pass: false });
+            }
+
+        }
+
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};
 
 
 
@@ -130,5 +171,6 @@ module.exports = {
     login,
     getDetails,
     updateUser,
-    deleteUser
+    deleteUser,
+    checkOldPassword
 };
