@@ -53,7 +53,82 @@ const login = async (req, res) => {
     }
 };
 
+
+const getDetails = async (req, res) => {
+    const { userId } = req.body;
+
+    //console.log(userId)
+
+    try {
+        // Find the user by ID
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const { firstname, lastname, email, age, dob, role } = user;
+
+        res.json({ firstname, lastname, email, age, dob, role });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};
+
+
+const updateUser = async (req, res) => {
+    const { userId, firstname, lastname, age, dob } = req.body;
+
+    try {
+
+        const result = await User.findByIdAndUpdate(userId, { "firstname": firstname, "lastname": lastname, "age": age, "dob": dob });
+
+        /*console.log(result)*/
+        if (result) {
+            return res.status(200).json({ message: 'User updated successfully', success: true });
+        }
+
+        res.status(201).json({ message: 'User updated successfully', success: true });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Something went wrong', success: false });
+    }
+};
+
+
+const deleteUser = async (req, res) => {
+    const { userId } = req.body;
+
+    // console.log(userId)
+
+    try {
+
+        const result = await User.findByIdAndDelete(userId);
+
+        /*console.log(result)*/
+        if (result) {
+            return res.status(200).json({ message: 'User Delete successfully', success: true });
+        }
+
+        res.status(201).json({ message: 'User Delete successfully', success: true });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Something went wrong', success: false });
+    }
+};
+
+
+
+
+
+
+
+
 module.exports = {
     register,
     login,
+    getDetails,
+    updateUser,
+    deleteUser
 };

@@ -48,6 +48,18 @@ export default function NavBarUser() {
                                     <li class="nav-item pl-1">
                                         <a class="nav-link" href="/admin"><i class="fa fa-th-list fa-fw mr-1"></i>Dashboard</a>
                                     </li>
+                                    <li class="nav-item pl-1">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Dropdown button
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <a class="dropdown-item" href={'/profile'}>Profile</a>
+                                                <button type="button" class="dropdown-item" onClick={() => logOut()}>LogOut</button>
+
+                                            </ul>
+                                        </div>
+                                    </li>
                                 </> : null
                         }
 
@@ -74,10 +86,10 @@ export default function NavBarUser() {
                             <>
 
                                 <li class="nav-item pl-1">
-                                    <a class="nav-link bg-orange-600 rounded text-black" href="#"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Login</a>
+                                    <a class="nav-link bg-orange-600 rounded text-black" href="/login"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Login</a>
                                 </li>
                                 <li class="nav-item pl-1">
-                                    <a class="nav-link bg-teal-400 rounded text-black" href="#"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Register</a>
+                                    <a class="nav-link bg-teal-400 rounded text-black" href="/register"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Register</a>
                                 </li>
 
                             </>

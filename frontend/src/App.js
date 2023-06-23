@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminSideRegister from './components/AdminSideRegister';
+import Profile from './components/Profile';
 function App() {
 
 
@@ -35,6 +36,7 @@ function App() {
               <Routes>
                 <Route exact path='/adminHome' element={<AdminHome />} />
                 <Route exact path="/adminRegister" element={<AdminSideRegister />} />
+                <Route exact path='/profile' element={<Profile />} />
 
               </Routes>
             </Router>
@@ -60,6 +62,8 @@ function App() {
 
         <Router>
           <Routes>
+
+
 
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/register' element={<Register />} />
