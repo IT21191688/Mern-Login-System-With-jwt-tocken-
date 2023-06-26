@@ -1,5 +1,6 @@
 const express = require('express');
-const { register, login, getDetails, updateUser, deleteUser, checkOldPassword } = require('../controllers/auth.controllers');
+const { register, login, getDetails, updateUser, deleteUser, checkOldPassword, sendVerificationKey, changePassword } = require('../controllers/auth.controllers');
+const { verify } = require('jsonwebtoken');
 
 const router = express.Router();
 
@@ -14,6 +15,10 @@ router.put('/updateUser', updateUser);
 router.post('/deleteUser', deleteUser);
 
 router.post('/resetPassword', checkOldPassword);
+
+router.post('/sendVerificationCode', sendVerificationKey);
+
+router.post('/changePassword', changePassword);
 
 
 module.exports = router;

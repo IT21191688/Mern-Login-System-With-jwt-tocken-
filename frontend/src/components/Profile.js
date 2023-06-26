@@ -3,6 +3,7 @@ import axios from "axios";
 import Styles from '../styles/Register.module.css'
 import { useState, useEffect } from 'react';
 import jwt from 'jwt-decode'
+import { Link } from "react-router-dom";
 
 
 export default function Profile() {
@@ -171,6 +172,9 @@ export default function Profile() {
                         <button className="btn float-left text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-50 " onClick={deleteProfileDetails}>Delete</button>
                     </div>
 
+                    <div className="col-lg-6 col-md-12 col-sm-12">
+                        <Link to={'/changePass'}><button className="btn float-left text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-50 ">Reset Password</button></Link>
+                    </div>
 
 
 

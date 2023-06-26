@@ -2,17 +2,16 @@ import React from 'react'
 import axios from "axios";
 import Styles from '../styles/Register.module.css'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-export default function ResetPassword() {
-
-
+export default function ChangePass() {
 
 
 
-    const [email, setUserName] = useState('')
+    const { email } = useParams();
+
     const [password, setPassword] = useState('')
-    const [oldPassword, setOldPassword] = useState('')
+    const [newPassword, setNewPassword] = useState('')
 
 
 
@@ -21,23 +20,24 @@ export default function ResetPassword() {
         e.preventDefault();
 
         try {
-            // Send login request to the backend API
-            const response = await axios.post('http://localhost:8080/auth/resetPassword', { email, password, oldPassword });
+
+            if (password === newPassword) {
+                const response = await axios.post('http://localhost:8080/auth/changePassword', { email, password });
 
 
-            alert(response)
 
-            if (response.data.pass == true) {
+                if (response.data.changed == true) {
 
-                alert("Password Changed Plese Loging again")
-                window.location.reload('/login');
-            } else {
+                    alert("Password Changed Plese Loging again")
+                    window.location.reload('/login');
+                } else {
 
-                alert("Password Not Changed Please Try again")
-                window.location.reload('/resetPassword');
+                    alert("Password Not Changed Please Try again")
+                    window.location.reload('/fogotPassword');
+
+                }
 
             }
-
 
         } catch (error) {
 
@@ -49,7 +49,7 @@ export default function ResetPassword() {
     const cancel = () => {
 
 
-        window.location.reload('/profile')
+        window.location.reload('/login')
 
     }
 
@@ -71,14 +71,14 @@ export default function ResetPassword() {
                 <div className='row'>
                     <div class="form-group col-md-12">
                         <label >User Name</label>
-                        <input type="email" class="form-control" placeholder="Enter password" onChange={e => setUserName(e.target.value)} />
+                        <input type="email" class="form-control" placeholder="Enter password" value={email} disabled />
                     </div>
 
                 </div><br></br>
                 <div className='row'>
                     <div class="form-group col-md-12">
-                        <label >Old Password</label>
-                        <input type="password" class="form-control" placeholder="Enter password" onChange={e => setOldPassword(e.target.value)} />
+                        <label >New Password</label>
+                        <input type="password" class="form-control" placeholder="Enter password" onChange={e => setNewPassword(e.target.value)} />
                     </div>
 
                 </div><br></br>
