@@ -74,7 +74,7 @@ export default function NavBarUser() {
                                             Dropdown button
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href={'/viewPatient/'}>Profile</a>
+                                            <a class="dropdown-item" href={'/profile'}>Profile</a>
                                             <button type="button" class="dropdown-item" onClick={() => logOut()}>LogOut</button>
 
                                         </ul>
