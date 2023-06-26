@@ -1,11 +1,4 @@
 # Mern-Login-System-With-jwt-tocken-
+(Focuced On backend)
 
-frontend
-
-npx create-react-app .
-
-npm install -D tailwindcss postcss autoprefixer
-
-npx tailwindcss init
-
-npm i react-router-dom
+npm install || npm install --force
