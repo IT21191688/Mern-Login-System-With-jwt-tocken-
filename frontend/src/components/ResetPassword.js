@@ -7,14 +7,9 @@ import { Link } from 'react-router-dom';
 export default function ResetPassword() {
 
 
-
-
-
     const [email, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [oldPassword, setOldPassword] = useState('')
-
-
 
 
     const resetSubmit = async (e) => {
@@ -48,15 +43,9 @@ export default function ResetPassword() {
 
     const cancel = () => {
 
-
         window.location.reload('/profile')
 
     }
-
-
-
-
-
 
 
 
@@ -85,8 +74,8 @@ export default function ResetPassword() {
                 <div className='row'>
 
                     <div class="form-group col-md-12">
-                        <label >Comfirm Password</label>
-                        <input type="password" class="form-control" placeholder="comfirm password" onChange={e => setPassword(e.target.value)} />
+                        <label >New Password</label>
+                        <input type="password" class="form-control" placeholder="New password" onChange={e => setPassword(e.target.value)} />
                     </div>
                 </div><br></br>
 

@@ -48,10 +48,6 @@ export default function AdminSideRegister() {
     }, []);
 
 
-
-
-
-
     return (
 
         <div className='container flex justify-center' >

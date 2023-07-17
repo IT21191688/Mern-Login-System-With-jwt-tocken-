@@ -6,14 +6,10 @@ import { Link, useParams } from 'react-router-dom';
 
 export default function ChangePass() {
 
-
-
     const { email } = useParams();
 
     const [password, setPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
-
-
 
 
     const resetSubmit = async (e) => {
@@ -52,12 +48,6 @@ export default function ChangePass() {
         window.location.reload('/login')
 
     }
-
-
-
-
-
-
 
 
     return (

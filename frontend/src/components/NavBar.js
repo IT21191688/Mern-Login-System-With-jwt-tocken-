@@ -51,10 +51,11 @@ export default function NavBarUser() {
                                     <li class="nav-item pl-1">
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Dropdown button
+                                                Account
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                 <a class="dropdown-item" href={'/profile'}>Profile</a>
+                                                <a class="dropdown-item" href={'/resetPassword'}>Change Password</a>
                                                 <button type="button" class="dropdown-item" onClick={() => logOut()}>LogOut</button>
 
                                             </ul>
@@ -68,13 +69,14 @@ export default function NavBarUser() {
                                 <li class="nav-item pl-1">
                                     <a class="nav-link" href="/get"><i class="fa fa-th-list fa-fw mr-1"></i>Search Reports</a>
                                 </li>
-                                <li class="nav-item pl-1">
+                                <li class="nav-item pl-1 pr-20">
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Dropdown button
+                                            Account
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <a class="dropdown-item" href={'/profile'}>Profile</a>
+                                            <a class="dropdown-item" href={'/resetPassword'}>Change Password</a>
                                             <button type="button" class="dropdown-item" onClick={() => logOut()}>LogOut</button>
 
                                         </ul>
@@ -102,9 +104,9 @@ export default function NavBarUser() {
 
 
 
-                    </ul >
-                </div >
-            </nav >
+                    </ul>
+                </div>
+            </nav>
 
         </>
     )

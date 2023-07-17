@@ -9,16 +9,14 @@ export default function Login() {
 
 
     const navigate = useNavigate();
-
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
+
             // Send login request to the backend API
             const response = await axios.post('http://localhost:8080/auth/login', { email, password });
             const token = response.data.token;
@@ -30,10 +28,7 @@ export default function Login() {
             localStorage.setItem('token', token);
             localStorage.setItem('role', role);
 
-
-
             alert("Login success" + role)
-
 
             window.location.reload(true);
 
@@ -44,7 +39,6 @@ export default function Login() {
             console.log(error);
         }
     };
-
 
     useEffect(() => {
         if (localStorage.getItem('role') === 'admin') {
@@ -57,8 +51,6 @@ export default function Login() {
             navigate('/login')
         }
     }, []);
-
-
 
 
     return (
@@ -92,11 +84,7 @@ export default function Login() {
             </form>
 
 
-
-
         </div>
     )
-
-
 
 }
