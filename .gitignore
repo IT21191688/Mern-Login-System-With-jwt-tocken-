@@ -8,6 +8,8 @@ backend/.env
 /.pnp
 .pnp.js
 
+client_secret.json
+
 # testing
 /coverage
 

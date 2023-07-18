@@ -55,36 +55,51 @@ export default function Login() {
 
     return (
 
-        <div className='container flex justify-center' >
+        <div className='container flex justify-center' style={{ height: "90vh" }}>
 
-            <form className='mt-20 border-solid border-inherit border-2 rounded-sm p-5 shadow-xl w-80' method="post" encType="multipart/form-data" >
-                <h1 className='text-primary text-2xl font-bold'>Login Form</h1><br></br>
+            <div className='pb-10'>
+
+                <form className='mt-10 border-solid border-inherit border-2 rounded-sm p-5 shadow-xl w-96' method="post" encType="multipart/form-data" >
+                    <h1 className='text-primary text-2xl font-bold'>Login Form</h1><br></br>
 
 
-                <div className='row'>
-                    <div class="form-group col-md-12">
-                        <label >Email</label>
-                        <input type="email" class="form-control" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
+                    <div className='row'>
+                        <div class="form-group col-md-12">
+                            <label >Email</label>
+                            <input type="email" class="form-control" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
+                        </div>
+
+                    </div><br></br>
+                    <div className='row'>
+
+                        <div class="form-group col-md-12">
+                            <label >Password</label>
+                            <input type="password" class="form-control" placeholder="password" onChange={e => setPassword(e.target.value)} />
+                        </div>
+                    </div><br></br>
+
+                    <div className='justify-center justify-items-center'>
+
+
+                        <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-48" onClick={handleSubmit}>Login</button><br></br><br></br>
+                        <Link to={'/register'}><button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-48">Register</button></Link><br></br><br></br>
+
+
+                        <center>
+                            <a type="submit" class="px-4 py-2 border flex gap-2 border-slate-200 rounded text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150 w-48 mr-2 mb-2"><img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />Google Login</a>
+                        </center>
                     </div>
 
-                </div><br></br>
-                <div className='row'>
-
-                    <div class="form-group col-md-12">
-                        <label >Password</label>
-                        <input type="password" class="form-control" placeholder="password" onChange={e => setPassword(e.target.value)} />
-                    </div>
-                </div><br></br>
 
 
-                <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-48" onClick={handleSubmit}>Login</button><br></br><br></br>
-                <Link to={'/register'}><button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-48">Register</button></Link><br></br>
 
-                <span>Fogot Password: <Link to={'/fogotPassword'} className='cursor-pointer'>Reset</Link></span>
-            </form>
+                    <span>Fogot Password: <Link to={'/fogotPassword'} className='cursor-pointer'>Reset</Link></span>
 
+                </form>
 
-        </div>
+            </div >
+
+        </div >
     )
 
 }

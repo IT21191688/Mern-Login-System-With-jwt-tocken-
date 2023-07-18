@@ -50,7 +50,7 @@ export default function AdminSideRegister() {
 
     return (
 
-        <div className='container flex justify-center' >
+        <div className='container flex justify-center' style={{ height: "90vh" }} >
 
             <form className='mt-20 border-solid border-inherit border-2 rounded-sm p-5 shadow-xl' method="post" encType="multipart/form-data" >
                 <h1 className='text-primary text-2xl font-bold'>Register Form</h1>

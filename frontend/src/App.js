@@ -1,18 +1,23 @@
 import './App.css';
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Register from './components/Register';
 import Login from './components/Login'
 import FogotPassword from './components/FogotPassword'
 import ResetPassword from './components/ResetPassword'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import AdminHome from './components/AdminHome';
 import UserHome from './components/UserHome';
-import { useEffect, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import AdminSideRegister from './components/AdminSideRegister';
 import ChangePass from './components/ChangePass';
 import Profile from './components/Profile';
+import 'react-toastify/dist/ReactToastify.css';
+import Footer from './components/Footer';
+
+
+
 function App() {
 
 
@@ -20,7 +25,25 @@ function App() {
   useEffect(() => {
     setUser(localStorage.getItem('role') ? localStorage.getItem('role') : "");
 
+
+    // Add the event listener for beforeunload to handle automatic logout
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      // Clean up the event listener when the component unmounts
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+
+
   })
+
+
+  // Function to handle beforeunload event
+  const handleBeforeUnload = () => {
+    // Clear the user data from localStorage when the browser is closed
+    localStorage.removeItem('role');
+  };
+
 
 
   return (
@@ -29,6 +52,8 @@ function App() {
 
         <ToastContainer autoClose={3000} />
         <NavBar />
+
+
 
         {
           user == "admin" ? (
@@ -67,6 +92,8 @@ function App() {
         <Router>
           <Routes>
 
+
+            <Route exact path='/' element={<Login />} />
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/register' element={<Register />} />
             <Route exact path='/fogotPassword' element={<FogotPassword />} />
@@ -74,6 +101,7 @@ function App() {
           </Routes>
         </Router>
 
+        <Footer />
       </div>
     </>
   );

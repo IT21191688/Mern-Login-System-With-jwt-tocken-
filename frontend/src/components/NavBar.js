@@ -35,18 +35,12 @@ export default function NavBarUser() {
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item pl-1">
-                            <a class="nav-link" href="#"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact Us</a>
-                        </li>
 
                         {
                             role === 'admin' ?
                                 <>
                                     <li class="nav-item pl-1">
-                                        <a class="nav-link" href="/admin"><i class="fa fa-th-list fa-fw mr-1"></i>Dashboard</a>
+                                        <a class="nav-link" href="/adminHome"><i class="fa fa-th-list fa-fw mr-1"></i>Dashboard</a>
                                     </li>
                                     <li class="nav-item pl-1">
                                         <div class="dropdown">
@@ -67,7 +61,7 @@ export default function NavBarUser() {
                         {role === 'user' ?
                             <>
                                 <li class="nav-item pl-1">
-                                    <a class="nav-link" href="/get"><i class="fa fa-th-list fa-fw mr-1"></i>Search Reports</a>
+                                    <a class="nav-link" href="/userHome"><i class="fa fa-th-list fa-fw mr-1"></i>Home</a>
                                 </li>
                                 <li class="nav-item pl-1 pr-20">
                                     <div class="dropdown">
