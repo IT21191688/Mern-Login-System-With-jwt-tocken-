@@ -9,6 +9,7 @@ export default function NavBarUser() {
     const [role, setRole] = useState("") // user object
     const logOut = () => {
         localStorage.clear();
+
         window.location.href = '/login';
     }
 

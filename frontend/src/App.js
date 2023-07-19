@@ -25,13 +25,13 @@ function App() {
   useEffect(() => {
     setUser(localStorage.getItem('role') ? localStorage.getItem('role') : "");
 
-
     // Add the event listener for beforeunload to handle automatic logout
     window.addEventListener('beforeunload', handleBeforeUnload);
 
     return () => {
       // Clean up the event listener when the component unmounts
       window.removeEventListener('beforeunload', handleBeforeUnload);
+
     };
 
 
@@ -75,6 +75,7 @@ function App() {
 
               <Routes>
 
+                <Route exact path='/userHome/:token/:role' element={<UserHome />} />
                 <Route exact path='/userHome' element={<UserHome />} />
                 <Route exact path='/profile' element={<Profile />} />
                 <Route exact path='/resetPassword' element={<ResetPassword />} />

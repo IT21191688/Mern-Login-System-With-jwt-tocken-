@@ -5,6 +5,7 @@ const config = require('../config');
 //import nodemailer
 const nodemailer = require('nodemailer');
 
+
 const register = async (req, res) => {
     const { firstname, lastname, email, age, dob, password, role } = req.body;
 
@@ -246,6 +247,24 @@ const changePassword = async (req, res) => {
     }
 };
 
+
+
+const routsInit = async (app, passport) => {
+    app.get('/auth/google',
+        passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+    app.get('/auth/googleSignin/auth/google/callback', passport.authenticate('google', {
+        failureRedirect: '/login'
+    }),
+        function (req, res) {
+            // Successful authentication, redirect home.
+            res.redirect('/');
+            console.log("User Authanticated")
+        });
+
+
+
+}
 
 
 

@@ -12,6 +12,23 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+
+    /*
+    const token = document.cookie.split('; ')
+        .find(cookie => cookie.startsWith('token='))
+        .split('=')[1];
+    const role = document.cookie.split('; ')
+        .find(cookie => cookie.startsWith('role='))
+        .split('=')[1];
+
+
+    console.log(role)
+    // Store the token in local storage
+    localStorage.setItem('token', token);
+    localStorage.setItem('role', role);
+
+
+    */
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -36,6 +53,25 @@ export default function Login() {
         } catch (error) {
 
             alert("Login Uuccess")
+            console.log(error);
+        }
+    };
+
+
+    const googleAuth = async () => {
+
+        try {
+
+
+            window.open(
+                `http://localhost:8080/auth/google`,
+                "_self"
+
+            );
+
+        } catch (error) {
+
+            alert("Login Unsucess")
             console.log(error);
         }
     };
@@ -86,7 +122,7 @@ export default function Login() {
 
 
                         <center>
-                            <a type="submit" class="px-4 py-2 border flex gap-2 border-slate-200 rounded text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150 w-48 mr-2 mb-2"><img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />Google Login</a>
+                            <a type='button' class="px-4 py-2 border flex gap-2 border-slate-200 rounded text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150 w-48 mr-2 mb-2" onClick={googleAuth} ><img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />Google Login</a>
                         </center>
                     </div>
 
@@ -97,9 +133,9 @@ export default function Login() {
 
                 </form>
 
-            </div >
+            </div>
 
-        </div >
+        </div>
     )
 
 }

@@ -25,4 +25,26 @@ const authenticate = (req, res, next) => {
     }
 };
 
-module.exports = authenticate;
+const googleAuthenticate = (req, res, next) => {
+
+
+    console.log(req.isAuthenticated())
+
+    if (req.isAuthenticated()) {
+
+        next();
+    }
+    else {
+
+        return res.send(false)
+    }
+
+
+
+};
+
+module.exports = {
+    authenticate,
+    googleAuthenticate
+
+};
