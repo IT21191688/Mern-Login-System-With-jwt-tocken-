@@ -2,11 +2,12 @@ import React from 'react'
 import axios from "axios";
 import Styles from '../styles/Register.module.css'
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 export default function ChangePass() {
 
     const { email } = useParams();
+    const navigate = useNavigate();
 
     const [password, setPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
@@ -25,11 +26,11 @@ export default function ChangePass() {
                 if (response.data.changed == true) {
 
                     alert("Password Changed Plese Loging again")
-                    window.location.reload('/login');
+                    navigate('/login');
                 } else {
 
                     alert("Password Not Changed Please Try again")
-                    window.location.reload('/fogotPassword');
+                    navigate('/fogotPassword');
 
                 }
 
@@ -44,8 +45,8 @@ export default function ChangePass() {
 
     const cancel = () => {
 
+        navigate('/login');
 
-        window.location.reload('/login')
 
     }
 

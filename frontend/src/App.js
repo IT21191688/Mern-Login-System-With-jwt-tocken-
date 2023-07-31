@@ -78,7 +78,6 @@ function App() {
 
               <Routes>
 
-                {/*<Route exact path='/userHome/:token/:role' element={<UserHome />} />*/}
                 <Route exact path='/userHome' element={<UserHome />} />
                 <Route exact path='/profile' element={<Profile />} />
                 <Route exact path='/resetPassword' element={<ResetPassword />} />

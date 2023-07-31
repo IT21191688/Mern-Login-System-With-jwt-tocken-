@@ -48,16 +48,15 @@ export default function FogotPassword() {
 
             const response = await axios.post('http://localhost:8080/auth/sendVerificationCode', { email, key });
 
+            const verificationCode = response.data.Digits;
+            alert("Verification code sent: " + verificationCode);
 
-            alert(response)
-            setVerificationCode(response.data.Digits)
-            alert(response.data.Digits)
-
+            setVerificationCode(verificationCode);
 
 
         } catch (error) {
 
-            alert("Something went wrong")
+            alert("Something went wrong" + error)
             console.log(error);
         }
     };
