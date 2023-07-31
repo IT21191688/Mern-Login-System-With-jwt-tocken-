@@ -16,6 +16,8 @@ import Profile from './components/Profile';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer';
 
+import Cookies from 'js-cookie';
+
 
 
 function App() {
@@ -25,25 +27,26 @@ function App() {
   useEffect(() => {
     setUser(localStorage.getItem('role') ? localStorage.getItem('role') : "");
 
-    // Add the event listener for beforeunload to handle automatic logout
-    window.addEventListener('beforeunload', handleBeforeUnload);
+  })
 
-    return () => {
-      // Clean up the event listener when the component unmounts
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+  useEffect(() => {
 
-    };
+    const roleCookie = Cookies.get('role');
 
+    setUser(roleCookie)
 
   })
 
 
+  /*
   // Function to handle beforeunload event
   const handleBeforeUnload = () => {
     // Clear the user data from localStorage when the browser is closed
     localStorage.removeItem('role');
   };
 
+
+  */
 
 
   return (
@@ -75,7 +78,7 @@ function App() {
 
               <Routes>
 
-                <Route exact path='/userHome/:token/:role' element={<UserHome />} />
+                {/*<Route exact path='/userHome/:token/:role' element={<UserHome />} />*/}
                 <Route exact path='/userHome' element={<UserHome />} />
                 <Route exact path='/profile' element={<Profile />} />
                 <Route exact path='/resetPassword' element={<ResetPassword />} />

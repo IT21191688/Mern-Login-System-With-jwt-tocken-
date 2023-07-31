@@ -12,6 +12,8 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [jwtToken, setJwtToken] = useState('');
+
 
     /*
     const token = document.cookie.split('; ')
@@ -37,8 +39,6 @@ export default function Login() {
             // Send login request to the backend API
             const response = await axios.post('http://localhost:8080/auth/login', { email, password });
             const token = response.data.token;
-
-
             const role = response.data.role
 
             // Store the token in local storage
@@ -52,8 +52,9 @@ export default function Login() {
 
         } catch (error) {
 
-            alert("Login Uuccess")
+            alert("Login Unsuccess")
             console.log(error);
+
         }
     };
 
@@ -62,12 +63,30 @@ export default function Login() {
 
         try {
 
+            const popup = window.open("http://localhost:8080/auth/google", "_blank", "width=600,height=600");
 
-            window.open(
-                `http://localhost:8080/auth/google`,
-                "_self"
 
-            );
+            const receiveMessage = (event) => {
+                if (event.origin === "http://localhost:8080" && event.data.token && event.data.role) {
+                    const { token, role } = event.data;
+
+
+                    // Store the token in local storage
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('role', role);
+
+                    alert("Login success: " + role);
+
+                    // Close the popup
+                    popup.close();
+                    window.removeEventListener("message", receiveMessage);
+
+                    window.location.reload(true);
+                }
+            };
+
+            // Add event listener to receive messages from the popup
+            window.addEventListener("message", receiveMessage);
 
         } catch (error) {
 
