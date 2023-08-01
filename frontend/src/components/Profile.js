@@ -19,7 +19,6 @@ export default function Profile() {
     const [role, setRole] = useState('')
 
 
-
     useEffect(() => {
 
         const fetchProfileDetails = async () => {
@@ -48,6 +47,7 @@ export default function Profile() {
             }
         };
         fetchProfileDetails();
+        alert(firstname);
 
     }, [])
 

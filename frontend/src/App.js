@@ -29,16 +29,7 @@ function App() {
 
   })
 
-  useEffect(() => {
 
-    const roleCookie = Cookies.get('role');
-
-    setUser(roleCookie)
-
-  })
-
-
-  /*
   // Function to handle beforeunload event
   const handleBeforeUnload = () => {
     // Clear the user data from localStorage when the browser is closed
@@ -46,7 +37,7 @@ function App() {
   };
 
 
-  */
+
 
 
   return (
@@ -59,28 +50,29 @@ function App() {
 
 
         {
-          user == "admin" ? (
+          user === "admin" ? (
 
             <Router>
               <Routes>
-                <Route exact path='/adminHome' element={<AdminHome />} />
-                <Route exact path="/adminRegister" element={<AdminSideRegister />} />
-                <Route exact path='/profile' element={<Profile />} />
-                <Route exact path='/resetPassword' element={<ResetPassword />} />
+                <Route path='/adminHome' element={<AdminHome />} />
+                <Route path="/adminRegister" element={<AdminSideRegister />} />
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/resetPassword' element={<ResetPassword />} />
 
               </Routes>
             </Router>
 
-          ) : user == 'user' ? (
+          ) : user === 'user' ? (
 
 
             <Router>
 
               <Routes>
 
-                <Route exact path='/userHome' element={<UserHome />} />
-                <Route exact path='/profile' element={<Profile />} />
-                <Route exact path='/resetPassword' element={<ResetPassword />} />
+                {/*<Route exact path='/userHome/:token/:role' element={<UserHome />} />*/}
+                <Route path='/userHome' element={<UserHome />} />
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/resetPassword' element={<ResetPassword />} />
 
               </Routes>
 
@@ -96,15 +88,16 @@ function App() {
           <Routes>
 
 
-            <Route exact path='/' element={<Login />} />
-            <Route exact path='/login' element={<Login />} />
-            <Route exact path='/register' element={<Register />} />
-            <Route exact path='/fogotPassword' element={<FogotPassword />} />
-            <Route exact path='/changePassword/:email' element={<ChangePass />} />
+            <Route path='/' element={<Login />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/fogotPassword' element={<FogotPassword />} />
+            <Route path='/changePassword/:email' element={<ChangePass />} />
+            {/*<Route path="/*" element={<Profile />} />*/}
           </Routes>
         </Router>
 
-        <Footer />
+        { /*<Footer />*/}
       </div>
     </>
   );

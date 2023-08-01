@@ -15,22 +15,6 @@ export default function Login() {
     const [jwtToken, setJwtToken] = useState('');
 
 
-    /*
-    const token = document.cookie.split('; ')
-        .find(cookie => cookie.startsWith('token='))
-        .split('=')[1];
-    const role = document.cookie.split('; ')
-        .find(cookie => cookie.startsWith('role='))
-        .split('=')[1];
-
-
-    console.log(role)
-    // Store the token in local storage
-    localStorage.setItem('token', token);
-    localStorage.setItem('role', role);
-
-
-    */
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -75,7 +59,7 @@ export default function Login() {
                     localStorage.setItem('token', token);
                     localStorage.setItem('role', role);
 
-                    alert("Login success: " + role);
+
 
                     // Close the popup
                     popup.close();
@@ -84,6 +68,8 @@ export default function Login() {
                     window.location.reload(true);
                 }
             };
+
+
 
             // Add event listener to receive messages from the popup
             window.addEventListener("message", receiveMessage);

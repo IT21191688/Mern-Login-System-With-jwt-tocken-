@@ -24,10 +24,13 @@ const routsInit = async (app, passport) => {
 
             console.log(token, role)
 
+
+
             res.send(`<script>
                      window.opener.postMessage({ token: '${token}', role: '${role}' }, 'http://localhost:3000');
                      window.close();
                     </script>`);
+
 
             console.log("User Authanticated")
         });
